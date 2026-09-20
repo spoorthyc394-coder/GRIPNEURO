@@ -1,0 +1,1686 @@
+/* =========================================================
+   NEUROGRIP
+   SMART HAND REHABILITATION SYSTEM
+   COMPLETE CSS
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4faf8;
+    color: #173f3a;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+button:focus {
+    outline: none;
+}
+
+
+/* =========================================================
+   SPLASH SCREEN
+========================================================= */
+
+#splashScreen {
+    position: fixed;
+    inset: 0;
+
+    background: #eaf8f4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 99999;
+
+    opacity: 1;
+
+    transition: opacity 0.3s ease;
+}
+
+.splashContent {
+    text-align: center;
+}
+
+.logoCircle {
+    width: 110px;
+    height: 110px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+
+    font-size: 55px;
+
+    box-shadow:
+        0 15px 40px rgba(26, 142, 119, 0.18);
+}
+
+.splashContent h1 {
+    margin-top: 20px;
+
+    font-size: 38px;
+
+    color: #147f6c;
+
+    letter-spacing: 1px;
+}
+
+.splashContent p {
+    margin-top: 8px;
+
+    color: #668681;
+
+    font-size: 14px;
+}
+
+.loadingBar {
+    width: 220px;
+    height: 6px;
+
+    margin: 28px auto;
+
+    background: #d5ebe5;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.loadingProgress {
+    width: 0;
+    height: 100%;
+
+    background: #25a88c;
+
+    animation: loading 1s linear forwards;
+}
+
+@keyframes loading {
+
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+#app {
+    display: none;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    position: fixed;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 250px;
+
+    background: white;
+
+    border-right: 1px solid #e1efeb;
+
+    padding: 25px 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 1000;
+}
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 5px 8px 30px;
+}
+
+.brandIcon {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 14px;
+
+    background: #e6f7f2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+}
+
+.brand h2 {
+    color: #167e6c;
+
+    font-size: 19px;
+
+    letter-spacing: 0.5px;
+}
+
+.brand span {
+    color: #819893;
+
+    font-size: 11px;
+
+    display: block;
+
+    margin-top: 3px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+nav {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.navButton {
+    width: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    text-align: left;
+
+    padding: 14px 15px;
+
+    border-radius: 12px;
+
+    color: #68817c;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.navButton:hover {
+    background: #edf8f5;
+
+    color: #16816f;
+}
+
+.navButton.active {
+    background: #dff5ee;
+
+    color: #147a69;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+========================================================= */
+
+.sidebarBottom {
+    margin-top: auto;
+}
+
+.systemInfo {
+    padding: 14px;
+
+    background: #f2faf7;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+}
+
+.onlineDot {
+    width: 9px;
+    height: 9px;
+
+    min-width: 9px;
+
+    border-radius: 50%;
+
+    background: #38bd78;
+
+    box-shadow: 0 0 0 4px #e1f8ec;
+}
+
+.systemInfo strong {
+    display: block;
+
+    font-size: 12px;
+
+    color: #214a44;
+}
+
+.systemInfo small {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 10px;
+
+    color: #819893;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.mainContent {
+    margin-left: 250px;
+
+    padding: 30px 40px;
+
+    min-height: 100vh;
+
+    width: calc(100% - 250px);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.dashboardHeader {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 30px;
+}
+
+.smallTitle {
+    color: #1b9981;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+}
+
+.dashboardHeader h1 {
+    font-size: 29px;
+
+    margin-top: 6px;
+
+    color: #173f3a;
+}
+
+.dashboardHeader p {
+    margin-top: 7px;
+
+    color: #78908c;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   ARDUINO CONNECTION
+========================================================= */
+
+.arduinoConnection {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+.connectButton {
+    border: none;
+
+    background: #198f78;
+
+    color: white;
+
+    padding: 12px 20px;
+
+    border-radius: 11px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 18px rgba(25, 143, 120, 0.18);
+
+    transition: 0.2s;
+}
+
+.connectButton:hover {
+    background: #147966;
+
+    transform: translateY(-1px);
+}
+
+.connectionStatus {
+    font-size: 12px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+.connectionStatus.disconnected {
+    color: #d65a5a;
+}
+
+.connectionStatus.connected {
+    color: #2eaa70;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page {
+    display: none;
+}
+
+.activePage {
+    display: block;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.statsGrid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 17px;
+
+    margin-bottom: 32px;
+}
+
+.statCard {
+    background: white;
+
+    border: 1px solid #e4efec;
+
+    border-radius: 17px;
+
+    padding: 19px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-height: 90px;
+
+    box-shadow:
+        0 8px 25px rgba(35, 111, 98, 0.04);
+}
+
+.statIcon {
+    width: 46px;
+    height: 46px;
+
+    min-width: 46px;
+
+    border-radius: 13px;
+
+    background: #e8f7f3;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+}
+
+.statCard span {
+    display: block;
+
+    color: #829590;
+
+    font-size: 11px;
+}
+
+.statCard strong {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 18px;
+
+    color: #214a44;
+}
+
+
+/* =========================================================
+   SECTION TITLES
+========================================================= */
+
+.sectionTitle {
+    margin-bottom: 15px;
+
+    display: flex;
+
+    justify-content: space-between;
+}
+
+.sectionTitle h2 {
+    font-size: 19px;
+
+    color: #173f3a;
+}
+
+.sectionTitle p {
+    color: #80928e;
+
+    font-size: 12px;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   EXERCISE GRID
+========================================================= */
+
+.exerciseGrid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.exerciseCard {
+    position: relative;
+
+    border: 1px solid #e2eeeb;
+
+    background: white;
+
+    border-radius: 16px;
+
+    padding: 19px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    color: #214a44;
+
+    min-height: 80px;
+}
+
+.exerciseCard:hover {
+    transform: translateY(-3px);
+
+    border-color: #9ddacd;
+
+    box-shadow:
+        0 10px 25px rgba(32, 126, 108, 0.09);
+}
+
+.exerciseCard:active {
+    transform: scale(0.98);
+}
+
+.exerciseEmoji {
+    width: 48px;
+    height: 48px;
+
+    min-width: 48px;
+
+    border-radius: 13px;
+
+    background: #edf8f5;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 24px;
+}
+
+.exerciseCard h3 {
+    font-size: 14px;
+}
+
+.exerciseCard p {
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    color: #82918e;
+}
+
+.playIcon {
+    margin-left: auto;
+
+    color: #1c9b82;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   CONTROL PANEL
+========================================================= */
+
+.controlPanel {
+    background: white;
+
+    border: 1px solid #e3efec;
+
+    border-radius: 15px;
+
+    padding: 14px 17px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 30px;
+}
+
+.stopButton {
+    border: none;
+
+    background: #fff0ef;
+
+    color: #d85c56;
+
+    border-radius: 10px;
+
+    padding: 10px 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.stopButton:hover {
+    background: #ffe2df;
+
+    transform: translateY(-1px);
+}
+
+#exerciseStatus {
+    color: #7d918c;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   FINGER GRID
+========================================================= */
+
+.fingerGrid {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 12px;
+
+    margin-bottom: 28px;
+}
+
+.fingerCard {
+    background: white;
+
+    border: 1px solid #e4efec;
+
+    border-radius: 15px;
+
+    padding: 15px;
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+
+    min-height: 75px;
+}
+
+.fingerCard > span {
+    font-size: 25px;
+}
+
+.fingerCard strong {
+    font-size: 12px;
+}
+
+.fingerCard small {
+    color: #7d918c;
+
+    font-size: 10px;
+}
+
+.angleBar {
+    width: 85px;
+
+    height: 6px;
+
+    background: #e4efec;
+
+    border-radius: 10px;
+
+    margin: 7px 0 4px;
+
+    overflow: hidden;
+}
+
+.angleFill {
+    width: 0%;
+
+    height: 100%;
+
+    background: #2aa98f;
+
+    border-radius: 10px;
+
+    transition: width 0.08s linear;
+}
+
+
+/* =========================================================
+   EMG LIVE SECTION
+========================================================= */
+
+.emgSection {
+    background: white;
+
+    border: 1px solid #e1eeeb;
+
+    border-radius: 19px;
+
+    padding: 20px;
+
+    margin-bottom: 30px;
+
+    box-shadow:
+        0 8px 28px rgba(38, 115, 100, 0.04);
+}
+
+.emgHeader {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 16px;
+}
+
+.liveTitle {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+.liveTitle h2 {
+    font-size: 18px;
+}
+
+.emgHeader p {
+    color: #81938f;
+
+    font-size: 12px;
+
+    margin-top: 5px;
+}
+
+.liveDot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #2bb889;
+
+    box-shadow:
+        0 0 0 5px #e7f8f2;
+
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+
+    0% {
+        box-shadow: 0 0 0 4px #e7f8f2;
+    }
+
+    50% {
+        box-shadow: 0 0 0 8px #e7f8f2;
+    }
+
+    100% {
+        box-shadow: 0 0 0 4px #e7f8f2;
+    }
+
+}
+
+.signalBox {
+    background: #edf9f5;
+
+    border-radius: 12px;
+
+    padding: 9px 15px;
+
+    text-align: right;
+
+    min-width: 100px;
+}
+
+.signalBox span {
+    display: block;
+
+    color: #7d918c;
+
+    font-size: 9px;
+}
+
+.signalBox strong {
+    display: block;
+
+    color: #1b8d77;
+
+    font-size: 20px;
+
+    margin-top: 3px;
+}
+
+.emgGraph {
+    position: relative;
+
+    width: 100%;
+
+    height: 260px;
+
+    border-radius: 13px;
+
+    overflow: hidden;
+
+    background: #f7fcfa;
+
+    border: 1px solid #e0eeea;
+}
+
+#emgCanvas {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+}
+
+.emgWaiting {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    color: #93a7a2;
+
+    font-size: 12px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.pageHeading {
+    margin-bottom: 28px;
+}
+
+.pageHeading h1 {
+    font-size: 29px;
+
+    margin-top: 6px;
+
+    color: #173f3a;
+}
+
+.pageHeading p {
+    color: #7f918d;
+
+    margin-top: 7px;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   PROGRAM CARDS
+========================================================= */
+
+.programGrid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.programCard {
+    background: white;
+
+    border: 1px solid #e2eeeb;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 8px 25px rgba(35, 111, 98, 0.04);
+
+    transition: 0.2s;
+}
+
+.programCard:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(35, 111, 98, 0.08);
+}
+
+.programIcon {
+    font-size: 36px;
+
+    margin-bottom: 15px;
+}
+
+.programCard h2 {
+    font-size: 18px;
+}
+
+.programCard p {
+    color: #7f918d;
+
+    line-height: 1.6;
+
+    font-size: 13px;
+
+    margin: 10px 0 20px;
+}
+
+.programCard button {
+    border: none;
+
+    background: #198f78;
+
+    color: white;
+
+    padding: 11px 17px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.programCard button:hover {
+    background: #147966;
+}
+
+
+/* =========================================================
+   EXERCISE PAGE STOP
+========================================================= */
+
+.exercisePageStop {
+    margin-top: 25px;
+}
+
+
+/* =========================================================
+   REPORT SUMMARY
+========================================================= */
+
+.reportSummary {
+    display: grid;
+
+    grid-template-columns: repeat(6, 1fr);
+
+    gap: 14px;
+
+    margin-bottom: 25px;
+}
+
+.reportBox {
+    background: white;
+
+    border: 1px solid #e1eeeb;
+
+    border-radius: 15px;
+
+    padding: 18px;
+
+    min-height: 100px;
+
+    box-shadow:
+        0 7px 22px rgba(35, 111, 98, 0.035);
+}
+
+.reportBox span {
+    display: block;
+
+    color: #80938e;
+
+    font-size: 11px;
+}
+
+.reportBox strong {
+    display: block;
+
+    margin-top: 12px;
+
+    color: #168572;
+
+    font-size: 20px;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   REPORT SECTIONS
+========================================================= */
+
+.reportSection {
+    background: white;
+
+    border: 1px solid #e1eeeb;
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    margin-bottom: 22px;
+
+    box-shadow:
+        0 8px 28px rgba(38, 115, 100, 0.035);
+}
+
+.reportSectionHeader {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.reportSectionHeader h2 {
+    color: #173f3a;
+
+    font-size: 18px;
+}
+
+.reportSectionHeader p {
+    color: #82918e;
+
+    font-size: 12px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   PERFORMANCE CARDS
+========================================================= */
+
+.performanceGrid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.performanceCard {
+    border: 1px solid #e4efec;
+
+    background: #f8fcfb;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    text-align: center;
+}
+
+.performanceCard h3 {
+    color: #6f8882;
+
+    font-size: 12px;
+
+    font-weight: normal;
+}
+
+.bigNumber {
+    margin-top: 15px;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    color: #198f78;
+}
+
+.bigExercise {
+    margin-top: 15px;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    color: #198f78;
+}
+
+.performanceCard p {
+    color: #91a29e;
+
+    font-size: 11px;
+
+    margin-top: 8px;
+}
+
+
+/* =========================================================
+   REPORT SIGNAL
+========================================================= */
+
+.reportSignal {
+    background: #edf9f5;
+
+    border-radius: 12px;
+
+    padding: 9px 16px;
+
+    text-align: right;
+}
+
+.reportSignal span {
+    display: block;
+
+    font-size: 9px;
+
+    color: #80928e;
+}
+
+.reportSignal strong {
+    display: block;
+
+    color: #198f78;
+
+    font-size: 18px;
+
+    margin-top: 3px;
+}
+
+
+/* =========================================================
+   REPORT EMG GRAPH
+========================================================= */
+
+.reportGraph {
+    position: relative;
+
+    width: 100%;
+
+    height: 300px;
+
+    background: #f7fcfa;
+
+    border: 1px solid #e0eeea;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+}
+
+#reportEmgCanvas {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+}
+
+.reportGraphWaiting {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    color: #93a7a2;
+
+    font-size: 12px;
+
+    text-align: center;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   FINGER MOVEMENT REPORT
+========================================================= */
+
+.fingerReportGraph {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.fingerReportRow {
+    display: grid;
+
+    grid-template-columns: 140px 1fr 55px;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.fingerReportName {
+    font-size: 13px;
+
+    font-weight: bold;
+
+    color: #315850;
+}
+
+.fingerReportBar {
+    height: 13px;
+
+    background: #e5f0ed;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.fingerReportFill {
+    width: 0%;
+
+    height: 100%;
+
+    background: #27a88d;
+
+    border-radius: 20px;
+
+    transition: width 0.15s linear;
+}
+
+.fingerReportRow > strong {
+    color: #198f78;
+
+    font-size: 13px;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   SESSION DETAILS
+========================================================= */
+
+.sessionDetails {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 14px;
+}
+
+.sessionDetails > div {
+    background: #f7fbfa;
+
+    border: 1px solid #e4efec;
+
+    border-radius: 12px;
+
+    padding: 16px;
+}
+
+.sessionDetails span {
+    display: block;
+
+    font-size: 10px;
+
+    color: #80928e;
+}
+
+.sessionDetails strong {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #237f70;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   DOWNLOAD BUTTON
+========================================================= */
+
+.downloadButton {
+    border: none;
+
+    padding: 13px 20px;
+
+    border-radius: 11px;
+
+    background: #198f78;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    margin-bottom: 25px;
+}
+
+.downloadButton:hover {
+    background: #147966;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   HISTORY
+========================================================= */
+
+.historyContainer {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+.historyItem {
+    background: white;
+
+    border: 1px solid #e2eeeb;
+
+    border-radius: 14px;
+
+    padding: 17px;
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+
+    gap: 15px;
+
+    align-items: center;
+}
+
+.historyItem strong {
+    color: #247d70;
+
+    font-size: 13px;
+}
+
+.historyItem span {
+    color: #81928e;
+
+    font-size: 12px;
+}
+
+.emptyHistory {
+    text-align: center;
+
+    background: white;
+
+    border: 1px solid #e2eeeb;
+
+    border-radius: 18px;
+
+    padding: 55px;
+
+    color: #879a95;
+}
+
+.emptyHistory h3 {
+    margin: 10px 0 5px;
+
+    color: #55726c;
+}
+
+.resetButton {
+    border: none;
+
+    padding: 12px 18px;
+
+    border-radius: 10px;
+
+    background: #fff0ef;
+
+    color: #d45b55;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.resetButton:hover {
+    background: #ffe3e0;
+}
+
+
+/* =========================================================
+   REPORT PAGE - LARGE DESKTOP
+========================================================= */
+
+#reports {
+    width: 100%;
+}
+
+#reports .pageHeading {
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1300px) {
+
+    .mainContent {
+        padding: 28px 30px;
+    }
+
+    .reportSummary {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .exerciseGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fingerGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .mainContent {
+        margin-left: 210px;
+
+        width: calc(100% - 210px);
+
+        padding: 25px;
+    }
+
+    .programGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reportSummary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .performanceGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .sessionDetails {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        width: 190px;
+    }
+
+    .mainContent {
+        margin-left: 190px;
+
+        width: calc(100% - 190px);
+
+        padding: 20px;
+    }
+
+    .dashboardHeader {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .arduinoConnection {
+        width: 100%;
+    }
+
+    .reportSummary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fingerGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fingerReportRow {
+        grid-template-columns: 110px 1fr 45px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .mainContent {
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 18px;
+    }
+
+    .statsGrid,
+    .exerciseGrid,
+    .programGrid,
+    .fingerGrid,
+    .reportSummary,
+    .sessionDetails {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboardHeader h1,
+    .pageHeading h1 {
+        font-size: 24px;
+    }
+
+    .emgGraph {
+        height: 220px;
+    }
+
+    .reportGraph {
+        height: 230px;
+    }
+
+    .emgHeader,
+    .reportSectionHeader {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .signalBox,
+    .reportSignal {
+        text-align: left;
+    }
+
+    .historyItem {
+        grid-template-columns: 1fr;
+    }
+
+    .fingerReportRow {
+        grid-template-columns: 90px 1fr 40px;
+
+        gap: 8px;
+    }
+
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #edf6f3;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #b7d8d0;
+
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8fc2b5;
+}
+
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+    background: #cdeee6;
+
+    color: #164d44;
+}
