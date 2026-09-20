@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEUROGRIP - Smart Hand Rehabilitation</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     SPLASH SCREEN
+====================================================== -->
+
+<div id="splashScreen">
+
+    <div class="splashContent">
+
+        <div class="logoCircle">
+            🖐️
+        </div>
+
+        <h1>NEUROGRIP</h1>
+
+        <p>Smart Hand Rehabilitation System</p>
+
+        <div class="loadingBar">
+            <div class="loadingProgress"></div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN APPLICATION
+====================================================== -->
+
+<div id="app">
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brandIcon">
+                🖐️
+            </div>
+
+            <div>
+                <h2>NEUROGRIP</h2>
+                <span>Smart Rehabilitation</span>
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <button class="navButton active"
+                    onclick="showPage('dashboard', this)">
+                🏠 Dashboard
+            </button>
+
+            <button class="navButton"
+                    onclick="showPage('exercises', this)">
+                🤲 Exercises
+            </button>
+
+            <button class="navButton"
+                    onclick="showPage('reports', this)">
+                📊 Reports
+            </button>
+
+            <button class="navButton"
+                    onclick="showPage('history', this)">
+                🕘 History
+            </button>
+
+        </nav>
+
+
+        <div class="sidebarBottom">
+
+            <div class="systemInfo">
+
+                <span class="onlineDot"></span>
+
+                <div>
+                    <strong>System Ready</strong>
+                    <small>Arduino connection available</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <main class="mainContent">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <header class="dashboardHeader">
+
+            <div>
+
+                <span class="smallTitle">
+                    SMART REHABILITATION
+                </span>
+
+                <h1>Hand Rehabilitation Dashboard</h1>
+
+                <p>
+                    Monitor muscle activity and control
+                    rehabilitation exercises.
+                </p>
+
+            </div>
+
+
+            <div class="arduinoConnection">
+
+                <button id="connectBtn"
+                        class="connectButton"
+                        onclick="connectArduino()">
+
+                    🔌 Connect Arduino
+
+                </button>
+
+                <div id="connectionStatus"
+                     class="connectionStatus disconnected">
+
+                    <span>●</span>
+                    Disconnected
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+
+        <section id="dashboard"
+                 class="page activePage">
+
+
+            <!-- STATISTICS -->
+
+            <div class="statsGrid">
+
+                <div class="statCard">
+
+                    <div class="statIcon">
+                        🤲
+                    </div>
+
+                    <div>
+                        <span>Current Exercise</span>
+
+                        <strong id="currentExercise">
+                            None
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="statCard">
+
+                    <div class="statIcon">
+                        🔁
+                    </div>
+
+                    <div>
+                        <span>Repetitions</span>
+
+                        <strong id="repCount">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="statCard">
+
+                    <div class="statIcon">
+                        ⚡
+                    </div>
+
+                    <div>
+                        <span>EMG Signal</span>
+
+                        <strong id="emgValue">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="statCard">
+
+                    <div class="statIcon">
+                        ⏱️
+                    </div>
+
+                    <div>
+                        <span>Session Time</span>
+
+                        <strong id="sessionTime">
+                            00:00
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK EXERCISES -->
+
+            <div class="sectionTitle">
+
+                <div>
+
+                    <h2>Quick Exercises</h2>
+
+                    <p>
+                        Select a finger or exercise to begin.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="exerciseGrid">
+
+                <button class="exerciseCard"
+                        onclick="startExercise('THUMB')">
+
+                    <div class="exerciseEmoji">
+                        👍
+                    </div>
+
+                    <div>
+                        <h3>Thumb</h3>
+                        <p>Individual thumb movement</p>
+                    </div>
+
+                    <span class="playIcon">▶</span>
+
+                </button>
+
+
+                <button class="exerciseCard"
+                        onclick="startExercise('INDEX')">
+
+                    <div class="exerciseEmoji">
+                        ☝️
+                    </div>
+
+                    <div>
+                        <h3>Index Finger</h3>
+                        <p>Individual index movement</p>
+                    </div>
+
+                    <span class="playIcon">▶</span>
+
+                </button>
+
+
+                <button class="exerciseCard"
+                        onclick="startExercise('MIDDLE')">
+
+                    <div class="exerciseEmoji">
+                        🖕
+                    </div>
+
+                    <div>
+                        <h3>Middle Finger</h3>
+                        <p>Individual middle movement</p>
+                    </div>
+
+                    <span class="playIcon">▶</span>
+
+                </button>
+
+
+                <button class="exerciseCard"
+                        onclick="startExercise('RING')">
+
+                    <div class="exerciseEmoji">
+                        💍
+                    </div>
+
+                    <div>
+                        <h3>Ring Finger</h3>
+                        <p>Individual ring movement</p>
+                    </div>
+
+                    <span class="playIcon">▶</span>
+
+                </button>
+
+
+                <button class="exerciseCard"
+                        onclick="startExercise('LITTLE')">
+
+                    <div class="exerciseEmoji">
+                        🤏
+                    </div>
+
+                    <div>
+                        <h3>Little Finger</h3>
+                        <p>Individual little movement</p>
+                    </div>
+
+                    <span class="playIcon">▶</span>
+
+                </button>
+
+
+                <button class="exerciseCard fullHand"
+                        onclick="startExercise('FULL')">
+
+                    <div class="exerciseEmoji">
+                        ✋
+                    </div>
+
+                    <div>
+                        <h3>Full Hand</h3>
+                        <p>Move all five fingers together</p>
+                    </div>
+
+                    <span class="playIcon">▶</span>
+
+                </button>
+
+            </div>
+
+
+            <!-- STOP -->
+
+            <div class="controlPanel">
+
+                <button class="stopButton"
+                        onclick="stopExercise()">
+
+                    ⏹ STOP EXERCISE
+
+                </button>
+
+                <span id="exerciseStatus">
+                    No exercise running
+                </span>
+
+            </div>
+
+
+            <!-- FINGER POSITION -->
+
+            <div class="sectionTitle">
+
+                <div>
+
+                    <h2>Finger Position</h2>
+
+                    <p>
+                        Live servo position received from Arduino.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="fingerGrid">
+
+                <div class="fingerCard">
+
+                    <span>👍</span>
+
+                    <div>
+                        <strong>Thumb</strong>
+
+                        <div class="angleBar">
+                            <div id="thumbBar"
+                                 class="angleFill"></div>
+                        </div>
+
+                        <small>
+                            <span id="thumbAngle">20</span>°
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="fingerCard">
+
+                    <span>☝️</span>
+
+                    <div>
+                        <strong>Index</strong>
+
+                        <div class="angleBar">
+                            <div id="indexBar"
+                                 class="angleFill"></div>
+                        </div>
+
+                        <small>
+                            <span id="indexAngle">20</span>°
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="fingerCard">
+
+                    <span>🖐️</span>
+
+                    <div>
+                        <strong>Middle</strong>
+
+                        <div class="angleBar">
+                            <div id="middleBar"
+                                 class="angleFill"></div>
+                        </div>
+
+                        <small>
+                            <span id="middleAngle">20</span>°
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="fingerCard">
+
+                    <span>💍</span>
+
+                    <div>
+                        <strong>Ring</strong>
+
+                        <div class="angleBar">
+                            <div id="ringBar"
+                                 class="angleFill"></div>
+                        </div>
+
+                        <small>
+                            <span id="ringAngle">20</span>°
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="fingerCard">
+
+                    <span>🤏</span>
+
+                    <div>
+                        <strong>Little</strong>
+
+                        <div class="angleBar">
+                            <div id="littleBar"
+                                 class="angleFill"></div>
+                        </div>
+
+                        <small>
+                            <span id="littleAngle">20</span>°
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EMG -->
+
+            <div class="emgSection">
+
+                <div class="emgHeader">
+
+                    <div>
+
+                        <div class="liveTitle">
+
+                            <span class="liveDot"></span>
+
+                            <h2>Live EMG Activity</h2>
+
+                        </div>
+
+                        <p>
+                            Real-time muscle activity from the EMG sensor.
+                        </p>
+
+                    </div>
+
+
+                    <div class="signalBox">
+
+                        <span>Current Signal</span>
+
+                        <strong id="emgLargeValue">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="emgGraph">
+
+                    <canvas id="emgCanvas"></canvas>
+
+                    <div id="emgWaiting"
+                         class="emgWaiting">
+
+                        Waiting for EMG signal...
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             EXERCISES PAGE
+        ================================================== -->
+
+        <section id="exercises"
+                 class="page">
+
+            <div class="pageHeading">
+
+                <span class="smallTitle">
+                    REHABILITATION
+                </span>
+
+                <h1>Exercise Programs</h1>
+
+                <p>
+                    Choose a personalized hand rehabilitation exercise.
+                </p>
+
+            </div>
+
+
+            <div class="programGrid">
+
+                <div class="programCard">
+
+                    <div class="programIcon">
+                        👍
+                    </div>
+
+                    <h2>Thumb Exercise</h2>
+
+                    <p>
+                        Repeated opening and closing movement
+                        of the thumb.
+                    </p>
+
+                    <button onclick="startExercise('THUMB')">
+                        Start Exercise
+                    </button>
+
+                </div>
+
+
+                <div class="programCard">
+
+                    <div class="programIcon">
+                        ☝️
+                    </div>
+
+                    <h2>Index Exercise</h2>
+
+                    <p>
+                        Controlled movement of the index finger.
+                    </p>
+
+                    <button onclick="startExercise('INDEX')">
+                        Start Exercise
+                    </button>
+
+                </div>
+
+
+                <div class="programCard">
+
+                    <div class="programIcon">
+                        🖐️
+                    </div>
+
+                    <h2>Full Hand Exercise</h2>
+
+                    <p>
+                        Synchronized movement of all five fingers.
+                    </p>
+
+                    <button onclick="startExercise('FULL')">
+                        Start Exercise
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             REPORT PAGE
+        ================================================== -->
+
+        <section id="reports"
+                 class="page">
+
+            <div class="pageHeading">
+
+                <span class="smallTitle">
+                    PATIENT PROGRESS
+                </span>
+
+                <h1>Rehabilitation Report</h1>
+
+                <p>
+                    Detailed information about the rehabilitation
+                    session and hand movement performance.
+                </p>
+
+            </div>
+
+
+            <!-- PATIENT INFORMATION -->
+
+            <div class="reportSection">
+
+                <div class="reportSectionHeader">
+
+                    <h2>👤 Patient Information</h2>
+
+                    <span>Session Profile</span>
+
+                </div>
+
+
+                <div class="reportInfoGrid">
+
+                    <div class="reportInfoBox">
+
+                        <span>Patient Name</span>
+
+                        <strong id="patientName">
+                            Patient
+                        </strong>
+
+                    </div>
+
+
+                    <div class="reportInfoBox">
+
+                        <span>Device</span>
+
+                        <strong>
+                            NEUROGRIP
+                        </strong>
+
+                    </div>
+
+
+                    <div class="reportInfoBox">
+
+                        <span>System</span>
+
+                        <strong>
+                            Smart Rehabilitation Glove
+                        </strong>
+
+                    </div>
+
+
+                    <div class="reportInfoBox">
+
+                        <span>Connection</span>
+
+                        <strong id="reportConnection">
+                            Arduino
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SESSION SUMMARY -->
+
+            <div class="reportSection">
+
+                <div class="reportSectionHeader">
+
+                    <h2>📋 Session Summary</h2>
+
+                    <span>Current Session</span>
+
+                </div>
+
+
+                <div class="reportCard">
+
+                    <div class="reportRow">
+
+                        <span>Current Exercise</span>
+
+                        <strong id="reportExercise">
+                            None
+                        </strong>
+
+                    </div>
+
+
+                    <div class="reportRow">
+
+                        <span>Total Repetitions</span>
+
+                        <strong id="reportReps">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="reportRow">
+
+                        <span>Session Duration</span>
+
+                        <strong id="reportTime">
+                            00:00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="reportRow">
+
+                        <span>Average EMG Signal</span>
+
+                        <strong id="reportEMG">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="reportRow">
+
+                        <span>Maximum EMG Signal</span>
+
+                        <strong id="reportMaxEMG">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="reportRow">
+
+                        <span>Minimum EMG Signal</span>
+
+                        <strong id="reportMinEMG">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FINGER PERFORMANCE -->
+
+            <div class="reportSection">
+
+                <div class="reportSectionHeader">
+
+                    <h2>🖐️ Finger Movement Analysis</h2>
+
+                    <span>Servo Position</span>
+
+                </div>
+
+
+                <div class="movementReportGrid">
+
+                    <div class="movementBox">
+
+                        <div class="movementTop">
+                            <span>👍</span>
+                            <strong>Thumb</strong>
+                        </div>
+
+                        <p>
+                            Current Angle:
+                            <strong id="reportThumbAngle">
+                                20°
+                            </strong>
+                        </p>
+
+                        <div class="reportProgress">
+                            <div id="reportThumbBar"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="movementBox">
+
+                        <div class="movementTop">
+                            <span>☝️</span>
+                            <strong>Index Finger</strong>
+                        </div>
+
+                        <p>
+                            Current Angle:
+                            <strong id="reportIndexAngle">
+                                20°
+                            </strong>
+                        </p>
+
+                        <div class="reportProgress">
+                            <div id="reportIndexBar"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="movementBox">
+
+                        <div class="movementTop">
+                            <span>🖐️</span>
+                            <strong>Middle Finger</strong>
+                        </div>
+
+                        <p>
+                            Current Angle:
+                            <strong id="reportMiddleAngle">
+                                20°
+                            </strong>
+                        </p>
+
+                        <div class="reportProgress">
+                            <div id="reportMiddleBar"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="movementBox">
+
+                        <div class="movementTop">
+                            <span>💍</span>
+                            <strong>Ring Finger</strong>
+                        </div>
+
+                        <p>
+                            Current Angle:
+                            <strong id="reportRingAngle">
+                                20°
+                            </strong>
+                        </p>
+
+                        <div class="reportProgress">
+                            <div id="reportRingBar"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="movementBox">
+
+                        <div class="movementTop">
+                            <span>🤏</span>
+                            <strong>Little Finger</strong>
+                        </div>
+
+                        <p>
+                            Current Angle:
+                            <strong id="reportLittleAngle">
+                                20°
+                            </strong>
+                        </p>
+
+                        <div class="reportProgress">
+                            <div id="reportLittleBar"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EMG ANALYSIS -->
+
+            <div class="reportSection">
+
+                <div class="reportSectionHeader">
+
+                    <h2>⚡ EMG Muscle Activity</h2>
+
+                    <span>Signal Analysis</span>
+
+                </div>
+
+
+                <div class="emgReportGrid">
+
+                    <div class="emgReportBox">
+
+                        <span>Current Signal</span>
+
+                        <strong id="reportCurrentEMG">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="emgReportBox">
+
+                        <span>Average Signal</span>
+
+                        <strong id="reportAverageEMG">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="emgReportBox">
+
+                        <span>Peak Signal</span>
+
+                        <strong id="reportPeakEMG">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="emgReportBox">
+
+                        <span>Samples Collected</span>
+
+                        <strong id="reportSamples">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="reportExplanation">
+
+                    <h3>EMG Interpretation</h3>
+
+                    <p>
+                        The EMG sensor measures electrical activity
+                        produced by muscles during rehabilitation.
+                        The dashboard receives the signal from Arduino
+                        and displays it as a real-time waveform.
+                    </p>
+
+                    <p>
+                        Higher variations in the waveform indicate
+                        changes in muscle activity. The collected values
+                        can be used to observe muscle engagement during
+                        different hand exercises.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- REHABILITATION PERFORMANCE -->
+
+            <div class="reportSection">
+
+                <div class="reportSectionHeader">
+
+                    <h2>📈 Rehabilitation Performance</h2>
+
+                    <span>Session Assessment</span>
+
+                </div>
+
+
+                <div class="performanceGrid">
+
+                    <div class="performanceCard">
+
+                        <div class="performanceIcon">
+                            🔁
+                        </div>
+
+                        <h3>Repetition Performance</h3>
+
+                        <p>
+                            Tracks the number of completed
+                            opening and closing movements.
+                        </p>
+
+                        <strong id="performanceReps">
+                            0 repetitions
+                        </strong>
+
+                    </div>
+
+
+                    <div class="performanceCard">
+
+                        <div class="performanceIcon">
+                            🖐️
+                        </div>
+
+                        <h3>Finger Movement</h3>
+
+                        <p>
+                            Monitors individual finger servo
+                            movement during exercises.
+                        </p>
+
+                        <strong id="performanceMovement">
+                            Monitoring
+                        </strong>
+
+                    </div>
+
+
+                    <div class="performanceCard">
+
+                        <div class="performanceIcon">
+                            ⚡
+                        </div>
+
+                        <h3>Muscle Activity</h3>
+
+                        <p>
+                            Records EMG activity received from
+                            the connected sensor.
+                        </p>
+
+                        <strong id="performanceEMG">
+                            0 signal
+                        </strong>
+
+                    </div>
+
+
+                    <div class="performanceCard">
+
+                        <div class="performanceIcon">
+                            ⏱️
+                        </div>
+
+                        <h3>Exercise Duration</h3>
+
+                        <p>
+                            Measures the amount of time spent
+                            performing the exercise.
+                        </p>
+
+                        <strong id="performanceTime">
+                            00:00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SYSTEM INFORMATION -->
+
+            <div class="reportSection">
+
+                <div class="reportSectionHeader">
+
+                    <h2>⚙️ System Information</h2>
+
+                    <span>NEUROGRIP Hardware</span>
+
+                </div>
+
+
+                <div class="systemReportGrid">
+
+                    <div>
+                        <span>Controller</span>
+                        <strong>Arduino</strong>
+                    </div>
+
+                    <div>
+                        <span>Servo Motors</span>
+                        <strong>5 Finger Servos</strong>
+                    </div>
+
+                    <div>
+                        <span>EMG Input</span>
+                        <strong>A0</strong>
+                    </div>
+
+                    <div>
+                        <span>Communication</span>
+                        <strong>USB Serial</strong>
+                    </div>
+
+                    <div>
+                        <span>Serial Speed</span>
+                        <strong>115200 baud</strong>
+                    </div>
+
+                    <div>
+                        <span>Finger Control</span>
+                        <strong>Individual / Full Hand</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECOMMENDATION -->
+
+            <div class="reportSection">
+
+                <div class="recommendationBox">
+
+                    <div class="recommendationIcon">
+                        💡
+                    </div>
+
+                    <div>
+
+                        <h2>Rehabilitation Observation</h2>
+
+                        <p id="reportObservation">
+
+                            Continue monitoring finger movement,
+                            repetition count and EMG activity during
+                            rehabilitation sessions.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DOWNLOAD -->
+
+            <div class="reportActions">
+
+                <button class="downloadButton"
+                        onclick="downloadReport()">
+
+                    ⬇️ Download Complete Report
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             HISTORY
+        ================================================== -->
+
+        <section id="history"
+                 class="page">
+
+            <div class="pageHeading">
+
+                <span class="smallTitle">
+                    SESSION HISTORY
+                </span>
+
+                <h1>Exercise History</h1>
+
+                <p>
+                    Previous rehabilitation sessions.
+                </p>
+
+            </div>
+
+
+            <div id="historyContainer"
+                 class="historyContainer">
+
+                <div class="emptyHistory">
+
+                    📋
+
+                    <h3>No sessions yet</h3>
+
+                    <p>
+                        Completed sessions will appear here.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button class="resetButton"
+                    onclick="resetHistory()">
+
+                🔄 Reset History
+
+            </button>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
